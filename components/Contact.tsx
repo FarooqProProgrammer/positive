@@ -15,14 +15,20 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="w-full py-12 lg:py-20">
+    <section id="contact" data-sc-act="flow" className="w-full py-12 lg:py-20">
       <div className="max-w-[1240px] mx-auto px-5 lg:px-0">
-        <SectionHeader
-          title="Contact Us"
-          description="Connect with Us: Let's Discuss Your Digital Marketing Needs"
-        />
+        <div data-sc-in>
+          <SectionHeader
+            title="Contact Us"
+            description="Connect with Us: Let's Discuss Your Digital Marketing Needs"
+          />
+        </div>
 
-        <div className="bg-[#F3F3F3] rounded-[45px] p-8 sm:p-12 lg:p-[60px] relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10">
+        <div
+          data-sc-in
+          data-sc-spotlight
+          className="bg-[#F3F3F3] rounded-[45px] p-8 sm:p-12 lg:p-[60px] relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 border border-[#191A23]/10 shadow-[0_5px_0_#191A23]"
+        >
           {/* Left Form Column */}
           <div className="w-full lg:max-w-[556px] z-10">
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
@@ -72,8 +78,8 @@ export default function Contact() {
                   Name
                 </label>
                 <input
-                  type="text"
                   id="name"
+                  type="text"
                   placeholder="Name"
                   required
                   className="w-full bg-white border border-[#191A23] rounded-[14px] px-6 py-4 text-base sm:text-[18px] text-[#191A23] placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-[#B9FF66] transition-all"
@@ -89,8 +95,8 @@ export default function Contact() {
                   Email*
                 </label>
                 <input
-                  type="email"
                   id="email"
+                  type="email"
                   placeholder="Email"
                   required
                   className="w-full bg-white border border-[#191A23] rounded-[14px] px-6 py-4 text-base sm:text-[18px] text-[#191A23] placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-[#B9FF66] transition-all"
@@ -117,21 +123,25 @@ export default function Contact() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-[#191A23] text-white py-5 rounded-[14px] text-lg sm:text-[20px] font-normal hover:bg-[#B9FF66] hover:text-[#191A23] transition-all duration-200 active:scale-98 mt-2 cursor-pointer"
+                data-sc-magnet="0.2"
+                className="w-full bg-[#191A23] text-white py-5 rounded-[14px] text-lg sm:text-[20px] font-normal hover:bg-[#B9FF66] hover:text-[#191A23] transition-all duration-200 active:scale-98 mt-2 cursor-pointer shadow-[0_4px_0_#191A23]"
               >
                 {submitted ? "Message Sent! ✓" : "Send Message"}
               </button>
             </form>
           </div>
 
-          {/* Right Illustration Column */}
-          <div className="hidden lg:flex justify-end items-center relative w-[500px] h-[550px] -mr-16 pointer-events-none">
+          {/* Right Illustration Column with scroll parallax */}
+          <div
+            data-sc-parallax="-0.08"
+            className="hidden lg:flex justify-end items-center relative w-[500px] h-[550px] -mr-16 pointer-events-none"
+          >
             <Image
               src="/images/contact-illustration.svg"
               alt="Contact Us Graphic"
               width={500}
               height={550}
-              className="object-contain scale-110"
+              className="object-contain scale-110 drop-shadow-sm"
             />
           </div>
         </div>
@@ -139,4 +149,3 @@ export default function Contact() {
     </section>
   );
 }
-

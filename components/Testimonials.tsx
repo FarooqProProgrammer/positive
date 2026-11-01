@@ -64,80 +64,93 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="w-full py-12 lg:py-20">
+    <section data-sc-act="flow" className="w-full py-12 lg:py-20">
       <div className="max-w-[1240px] mx-auto px-5 lg:px-0">
-        <SectionHeader
-          title="Testimonials"
-          description="Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services"
-        />
+        <div data-sc-in>
+          <SectionHeader
+            title="Testimonials"
+            description="Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services"
+          />
+        </div>
 
-        <div className="bg-[#191A23] rounded-[45px] py-12 sm:py-16 lg:py-[84px] px-6 sm:px-12 lg:px-[100px] text-white overflow-hidden relative">
-          {/* Testimonial Active Slide */}
-          <div className="max-w-[850px] mx-auto min-h-[300px] flex flex-col justify-between">
-            {/* Speech Bubble Container */}
-            <div className="relative border border-[#B9FF66] rounded-[45px] p-8 sm:p-12 mb-10 transition-opacity duration-300">
-              <p className="text-base sm:text-lg lg:text-[20px] text-white leading-relaxed">
+        {/* Carousel Container */}
+        <div
+          data-sc-in
+          className="bg-[#191A23] rounded-[45px] py-12 px-6 sm:px-12 lg:py-20 lg:px-16 text-white relative overflow-hidden shadow-[0_6px_0_#B9FF66]"
+        >
+          {/* Active Testimonial Card */}
+          <div className="max-w-[800px] mx-auto flex flex-col items-center">
+            {/* Speech Bubble */}
+            <div className="relative border border-[#B9FF66] rounded-[40px] p-8 sm:p-12 mb-10 w-full transition-all duration-300">
+              <p className="text-[16px] sm:text-[18px] lg:text-[20px] font-normal leading-relaxed text-white">
                 {testimonials[currentIndex].quote}
               </p>
 
-              {/* Speech bubble pointer arrow */}
-              <div className="absolute -bottom-4 left-14 w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-t-[16px] border-t-[#B9FF66]">
-                <div className="absolute -top-[17px] -left-[14px] w-0 h-0 border-l-[14px] border-l-transparent border-r-[14px] border-r-transparent border-t-[14px] border-t-[#191A23]" />
-              </div>
+              {/* Speech bubble pointer notch */}
+              <div
+                className="absolute -bottom-4 left-16 sm:left-20 w-8 h-8 bg-[#191A23] border-b border-r border-[#B9FF66] rotate-45"
+                aria-hidden="true"
+              />
             </div>
 
-            {/* Author Info */}
-            <div className="pl-14 mb-10 sm:mb-14">
-              <h5 className="text-[#B9FF66] text-lg sm:text-[20px] font-medium">
+            {/* Author info */}
+            <div className="self-start pl-16 sm:pl-20 mb-12 sm:mb-16">
+              <h4 className="text-[18px] sm:text-[20px] font-medium text-[#B9FF66]">
                 {testimonials[currentIndex].name}
-              </h5>
-              <p className="text-white/80 text-sm sm:text-base font-normal">
+              </h4>
+              <p className="text-[16px] sm:text-[18px] text-white">
                 {testimonials[currentIndex].role}
               </p>
             </div>
 
-            {/* Controls Bar */}
-            <div className="flex items-center justify-between sm:justify-center sm:gap-14 pt-4">
+            {/* Navigation Controls: Arrows and Star Indicators */}
+            <div className="flex items-center justify-between w-full max-w-[500px]">
               {/* Prev Button */}
               <button
+                type="button"
                 onClick={prev}
-                className="text-white hover:text-[#B9FF66] transition-colors p-2 focus:outline-none cursor-pointer"
                 aria-label="Previous Testimonial"
+                className="p-2 text-white hover:text-[#B9FF66] transition-colors cursor-pointer"
               >
                 <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M19 12H5M12 19l-7-7 7-7" />
+                  <path
+                    d="M19 12H5M5 12L12 19M5 12L12 5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </button>
 
               {/* Star Indicators */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 {testimonials.map((_, idx) => (
                   <button
                     key={idx}
+                    type="button"
                     onClick={() => setCurrentIndex(idx)}
-                    className="focus:outline-none cursor-pointer p-1"
                     aria-label={`Go to slide ${idx + 1}`}
+                    className="p-1 cursor-pointer transition-transform hover:scale-125"
                   >
                     <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      className={`transition-all duration-300 ${
-                        idx === currentIndex
-                          ? "fill-[#B9FF66] text-[#B9FF66] scale-125"
-                          : "fill-white/30 text-white/30 hover:fill-white/60"
-                      }`}
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill={currentIndex === idx ? "#B9FF66" : "none"}
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      <path
+                        d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
+                        fill={currentIndex === idx ? "#B9FF66" : "white"}
+                        stroke={currentIndex === idx ? "#B9FF66" : "white"}
+                      />
                     </svg>
                   </button>
                 ))}
@@ -145,21 +158,25 @@ export default function Testimonials() {
 
               {/* Next Button */}
               <button
+                type="button"
                 onClick={next}
-                className="text-white hover:text-[#B9FF66] transition-colors p-2 focus:outline-none cursor-pointer"
                 aria-label="Next Testimonial"
+                className="p-2 text-white hover:text-[#B9FF66] transition-colors cursor-pointer"
               >
                 <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
+                  <path
+                    d="M5 12H19M19 12L12 5M19 12L12 19"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </button>
             </div>
@@ -169,4 +186,3 @@ export default function Testimonials() {
     </section>
   );
 }
-

@@ -12,13 +12,17 @@ export default function Logotypes() {
   ];
 
   return (
-    <section className="w-full py-8 lg:py-16">
+    <section className="w-full py-8 lg:py-16 overflow-hidden">
       <div className="max-w-[1240px] mx-auto px-5 lg:px-0">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:justify-between items-center gap-8 lg:gap-12">
+        <div
+          data-sc-in
+          data-sc-stagger="70"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:justify-between items-center gap-8 lg:gap-12"
+        >
           {logos.map((logo) => (
             <div
               key={logo.name}
-              className="flex justify-center items-center py-2 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+              className="flex justify-center items-center py-2 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-300 hover:scale-105"
             >
               <Image
                 src={logo.src}
@@ -34,4 +38,3 @@ export default function Logotypes() {
     </section>
   );
 }
-

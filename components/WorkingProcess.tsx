@@ -56,54 +56,56 @@ export default function WorkingProcess() {
   };
 
   return (
-    <section className="w-full py-12 lg:py-20">
+    <section data-sc-act="flow" className="w-full py-12 lg:py-20">
       <div className="max-w-[1240px] mx-auto px-5 lg:px-0">
-        <SectionHeader
-          title="Our Working Process"
-          description="Step-by-Step Guide to Achieving Your Business Goals"
-        />
+        <div data-sc-in>
+          <SectionHeader
+            title="Our Working Process"
+            description="Step-by-Step Guide to Achieving Your Business Goals"
+          />
+        </div>
 
-        <div className="flex flex-col gap-6 lg:gap-8">
-          {steps.map((step, idx) => {
-            const isOpen = openIndex === idx;
+        <div
+          data-sc-in
+          data-sc-stagger="60"
+          className="flex flex-col gap-6 lg:gap-8"
+        >
+          {steps.map((step, index) => {
+            const isOpen = openIndex === index;
             return (
               <div
                 key={step.number}
-                className={`rounded-[30px] sm:rounded-[45px] border border-[#191A23] shadow-[0_5px_0_#191A23] transition-all duration-300 overflow-hidden ${
-                  isOpen ? "bg-[#B9FF66]" : "bg-[#F3F3F3]"
+                className={`rounded-[45px] border border-[#191A23] shadow-[0_5px_0_#191A23] p-8 sm:p-10 lg:p-[40px_60px] transition-all duration-300 ${
+                  isOpen ? "bg-[#B9FF66]" : "bg-[#F3F3F3] hover:bg-white"
                 }`}
               >
-                <button
-                  onClick={() => toggleStep(idx)}
-                  className="w-full text-left p-6 sm:px-12 sm:py-8 lg:py-10 flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
-                  aria-expanded={isOpen}
+                <div
+                  className="flex items-center justify-between cursor-pointer select-none"
+                  onClick={() => toggleStep(index)}
                 >
-                  <div className="flex items-center gap-4 sm:gap-7">
-                    <span className="text-3xl sm:text-5xl lg:text-6xl font-medium text-[#191A23]">
+                  <div className="flex items-center gap-4 sm:gap-6 lg:gap-8">
+                    <span className="text-[30px] sm:text-[40px] lg:text-[60px] font-medium text-[#191A23]">
                       {step.number}
                     </span>
-                    <span className="text-lg sm:text-2xl lg:text-3xl font-medium text-[#191A23]">
+                    <h3 className="text-[18px] sm:text-[22px] lg:text-[30px] font-medium text-[#191A23]">
                       {step.title}
-                    </span>
+                    </h3>
                   </div>
 
-                  {/* Plus / Minus Button Circle */}
-                  <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-[#F3F3F3] border border-[#191A23] flex items-center justify-center shrink-0">
-                    {isOpen ? (
-                      <span className="w-4 sm:w-6 h-0.5 sm:h-1 bg-[#191A23] rounded-full" />
-                    ) : (
-                      <div className="relative w-4 sm:w-6 h-4 sm:h-6 flex items-center justify-center">
-                        <span className="absolute w-4 sm:w-6 h-0.5 sm:h-1 bg-[#191A23] rounded-full" />
-                        <span className="absolute h-4 sm:h-6 w-0.5 sm:w-1 bg-[#191A23] rounded-full" />
-                      </div>
-                    )}
-                  </div>
-                </button>
+                  <button
+                    type="button"
+                    aria-label={isOpen ? "Collapse section" : "Expand section"}
+                    className="w-[36px] h-[36px] sm:w-[48px] sm:h-[48px] lg:w-[58px] lg:h-[58px] rounded-full border border-[#191A23] bg-[#F3F3F3] flex items-center justify-center shrink-0 transition-transform duration-200"
+                  >
+                    <span className="text-[24px] sm:text-[30px] lg:text-[36px] font-medium text-[#191A23] leading-none mb-1">
+                      {isOpen ? "−" : "+"}
+                    </span>
+                  </button>
+                </div>
 
                 {isOpen && (
-                  <div className="px-6 sm:px-12 pb-8 sm:pb-10 pt-0 animate-in fade-in duration-200">
-                    <hr className="border-t border-[#191A23] mb-6 sm:mb-8" />
-                    <p className="text-base sm:text-lg text-[#191A23] leading-relaxed">
+                  <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-[#191A23]">
+                    <p className="text-[16px] sm:text-[18px] text-[#191A23] leading-relaxed">
                       {step.content}
                     </p>
                   </div>
@@ -116,4 +118,3 @@ export default function WorkingProcess() {
     </section>
   );
 }
-

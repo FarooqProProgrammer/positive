@@ -9,10 +9,12 @@ import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollCraftInit from "@/components/ScrollCraftInit";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
+      <ScrollCraftInit />
       <Navbar />
       <main className="flex-1">
         <Hero />

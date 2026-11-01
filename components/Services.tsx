@@ -93,21 +93,29 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="w-full py-12 lg:py-20">
+    <section id="services" data-sc-act="flow" className="w-full py-12 lg:py-20">
       <div className="max-w-[1240px] mx-auto px-5 lg:px-0">
-        <SectionHeader
-          title="Services"
-          description="At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include:"
-        />
+        <div data-sc-in>
+          <SectionHeader
+            title="Services"
+            description="At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include:"
+          />
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        <div
+          data-sc-in
+          data-sc-stagger="80"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10"
+        >
           {services.map((service) => (
             <div
               key={service.id}
-              className={`${service.bgColor} rounded-[45px] border border-[#191A23] shadow-[0_5px_0_#191A23] p-8 sm:p-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 relative transition-transform duration-200 hover:-translate-y-1`}
+              data-sc-tilt="5"
+              data-sc-spotlight
+              className={`${service.bgColor} rounded-[45px] border border-[#191A23] shadow-[0_5px_0_#191A23] p-8 sm:p-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 relative transition-transform duration-200 hover:-translate-y-1.5`}
             >
               {/* Text & Link Left Column */}
-              <div className="flex flex-col justify-between h-full min-h-[180px] sm:min-h-[210px]">
+              <div className="flex flex-col justify-between h-full min-h-[180px] sm:min-h-[210px] z-10">
                 <div className="flex flex-col items-start gap-1">
                   {service.titleLines.map((line, idx) => (
                     <span
@@ -124,7 +132,8 @@ export default function Services() {
                   className="group inline-flex items-center gap-4 mt-8 sm:mt-12 focus:outline-none"
                 >
                   <span
-                    className={`w-[41px] h-[41px] rounded-full ${service.circleBgColor} flex items-center justify-center transition-transform duration-200 group-hover:rotate-45`}
+                    data-sc-magnet="0.2"
+                    className={`w-[41px] h-[41px] rounded-full ${service.circleBgColor} flex items-center justify-center transition-transform duration-200 group-hover:rotate-45 shadow-[0_2px_0_#191A23]`}
                   >
                     <svg
                       width="18"
@@ -151,13 +160,13 @@ export default function Services() {
               </div>
 
               {/* Service Illustration Right Column */}
-              <div className="w-full sm:w-[210px] h-[170px] flex justify-end items-center self-end sm:self-center">
+              <div className="w-full sm:w-[210px] h-[170px] flex justify-end items-center self-end sm:self-center z-10">
                 <Image
                   src={service.image}
                   alt={service.alt}
                   width={210}
                   height={170}
-                  className="max-h-[170px] w-auto object-contain"
+                  className="max-h-[170px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             </div>
@@ -167,4 +176,3 @@ export default function Services() {
     </section>
   );
 }
-
